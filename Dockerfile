@@ -1,4 +1,4 @@
-FROM mediawiki:1.39-fpm-alpine
+FROM mediawiki:stable-fpm-alpine
 
 RUN apk update \
     && apk add --no-cache --virtual .build-dependencies-in-virtual-world openldap-dev \
