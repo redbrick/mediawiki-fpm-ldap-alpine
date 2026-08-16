@@ -1,10 +1,8 @@
-FROM mediawiki:stable-fpm-alpine
+FROM mediawiki:1.43-fpm-alpine
 
-RUN apk update \
-    && apk add --no-cache --virtual .build-dependencies-in-virtual-world openldap-dev \
-    && docker-php-ext-install ldap \
-    && docker-php-ext-enable  ldap \
+RUN apk add --no-cache openldap
+
+RUN apk add --no-cache --virtual .build-deps openldap-dev \
     && docker-php-ext-configure ldap --with-libdir=lib/ \
-    && docker-php-ext-install ldap;
-
-CMD ["php-fpm"]
+    && docker-php-ext-install ldap \
+    && apk del .build-deps
