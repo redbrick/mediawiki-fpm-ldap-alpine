@@ -1,6 +1,6 @@
 FROM mediawiki:1.43-fpm-alpine
 
-RUN apk add --no-cache openldap imagemagick-jpeg
+RUN apk add --no-cache openldap imagemagick-jpeg imagemagick-webp
 
 RUN apk add --no-cache --virtual .build-deps openldap-dev \
     && docker-php-ext-configure ldap --with-libdir=lib/ \
